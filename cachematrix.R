@@ -10,7 +10,9 @@ makeCacheMatrix <- function(x = matrix()) {
     inv <<- NULL
   }
   get <- function() x
+  #set the inverse of a matrix
   setInverse <- function(inverse) inv <<- inverse
+  #get the inverse of a matrix
   getInverse <- function() inv
   list(set = set,
        get = get,
@@ -28,6 +30,7 @@ cacheSolve <- function(x, ...) {
     return(inv)
   }
   mat <- x$get()
+  #cache of inverse of matrix using solve()
   inv <- solve(mat, ...)
   x$setInverse(inv)
   inv
